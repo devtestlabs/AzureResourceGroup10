@@ -60,12 +60,25 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "webNsgName":"[variables('webNsgName')]",
-          "appNsgName":"[variables('appNsgName')]",
-          "dbNsgName": "[variables('dbNsgName')]",
-          "adNsgName": "[variables('adNsgName')]",
-          "edgeNsgName":"[variables('edgeNsgName')]",
-          "location": "[parameters('location')]"
+          "webNsgName": {
+            "value": "[variables('webNsgName')]"
+          },
+          "appNsgName": {
+            "value": "[variables('appNsgName')]"
+          },
+          "dbNsgName": {
+            "value": "[variables('dbNsgName')]"
+          },
+          "adNsgName": {
+            "value": "[variables('adNsgName')]"
+          },
+          "edgeNsgName": {
+            "value": "[variables('edgeNsgName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          }
+            
         }
       }
     },

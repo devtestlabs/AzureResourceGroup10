@@ -16,15 +16,21 @@
     },
     "dbNsgName": {
       "type": "string",
-      "description": "DB NSG Name"
+      "metadata": {
+        "description": "DB NSG Name"
+      }
     },
     "adNsgName": {
       "type": "string",
-      "description": "AD NSG Name"
+      "metadata": {
+        "description": "AD NSG Name"
+      }
     },
     "edgeNsgName": {
       "type": "string",
-      "description": "Edge NSG Name"
+      "metadata": {
+        "description": "Edge NSG Name"
+      }
     },
     "location": {
       "type": "string",
@@ -71,7 +77,6 @@
       "location": "[parameters('location')]",
       "properties": {}
     }
-
 
   ],
 
