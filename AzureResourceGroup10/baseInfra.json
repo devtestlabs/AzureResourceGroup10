@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "newVnetName": {
+      "type": "string",
+      "defaultValue": "[concat('BaseVnet-',uniqueString(resourceGroup().id))]"
+    },
+    "vnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.0.0/16"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "adSubnetAddrPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.0.0/24"
+    },
+    "edgeSubnetAddrPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.1.0/24"
+    },
+    "webSubnetAddrPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.2.0/24"
+    },
+    "appSubnetAddrPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.3.0/24"
+    },
+    "dbSubnetAddrPrefix": {
+      "type": "string",
+      "defaultValue": "10.245.4.0/24"
+    }
+  },
+  "variables": {
+    "adSubnetName": "[concat('ADSubnet-',uniqueString(resourceGroup().id))]",
+    "edgeSubnetName": "[concat('EdgeSubnet-',uniqueString(resourceGroup().id))]",
+    "webSubnetName": "[concat('WebSubnet-',uniqueString(resourceGroup().id))]",
+    "appSubnetName": "[concat('AppSubnet-',uniqueString(resourceGroup().id))]",
+    "dbSubnetName": "[concat('DBSubnet-',uniqueString(resourceGroup().id))]",
+    "nsgTemplateLink": "",
+    "webNsgName": "[concat('WebNSG-',uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-05-10",
+      "type": "Microsoft.Resources/deployments",
+      "name": "nsgLinkedTemplate",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('nsgTemplateLink')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "webNsgName": {
+            "value": "[variables('webNsgName')]"
+          },
+          "location": {
+            "value": "[parameters(resourceGroup().location)]"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/virtualNetworks",
+      "name": "[parameters('newVnetName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('vnetAddressPrefix')]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[variables('adSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('adSubnetAddrPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('edgeSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('edgeSubnetAddrPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('webSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('webSubnetAddrPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('appSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('appSubnetAddrPrefix')]"
+            }
+          },
+          {
+            "name": "[variables('dbSubnetName')]",
+            "properties": {
+              "addressPrefix": "[parameters('dbSubnetAddrPrefix')]"
+            }
+          }
+        ]
+      }
+
+    }
+  ],
+  "outputs": {}
+}
