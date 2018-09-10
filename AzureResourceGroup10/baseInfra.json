@@ -41,8 +41,12 @@
     "webSubnetName": "[concat('WebSubnet-',uniqueString(resourceGroup().id))]",
     "appSubnetName": "[concat('AppSubnet-',uniqueString(resourceGroup().id))]",
     "dbSubnetName": "[concat('DBSubnet-',uniqueString(resourceGroup().id))]",
-    "nsgTemplateLink": "",
-    "webNsgName": "[concat('WebNSG-',uniqueString(resourceGroup().id))]"
+    "nsgTemplateLink": "https://raw.githubusercontent.com/devtestlabs/AzureResourceGroup10/master/AzureResourceGroup10/nsgInfra.json",
+    "webNsgName": "[concat('Web-NSG-',uniqueString(resourceGroup().id))]",
+    "appNsgName": "[concat('App-NSG-',uniqueString(resourceGroup().id))]",
+    "dbNsgName": "[concat('DB-NSG-',uniqueString(resourceGroup().id))]",
+    "adNsgName": "[concat('AD-NSG-',uniqueString(resourceGroup().id))]",
+    "edgeNsgName": "[concat('Edge-NSG-',uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
@@ -56,12 +60,12 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "webNsgName": {
-            "value": "[variables('webNsgName')]"
-          },
-          "location": {
-            "value": "[parameters(resourceGroup().location)]"
-          }
+          "webNsgName":"[variables('webNsgName')]",
+          "appNsgName":"[variables('appNsgName')]",
+          "dbNsgName": "[variables('dbNsgName')]",
+          "adNsgName": "[variables('adNsgName')]",
+          "edgeNsgName":"[variables('edgeNsgName')]",
+          "location": "[parameters('location')]"
         }
       }
     },

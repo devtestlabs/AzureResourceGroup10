@@ -5,8 +5,26 @@
     "webNsgName": {
       "type": "string",
       "metadata": {
-        "description": "NSG Name"
+        "description": "Web NSG Name"
       }
+    },
+    "appNsgName": {
+      "type": "string",
+      "metadata": {
+        "description": "App NSG Name"
+      }
+    },
+    "dbNsgName": {
+      "type": "string",
+      "description": "DB NSG Name"
+    },
+    "adNsgName": {
+      "type": "string",
+      "description": "AD NSG Name"
+    },
+    "edgeNsgName": {
+      "type": "string",
+      "description": "Edge NSG Name"
     },
     "location": {
       "type": "string",
@@ -24,6 +42,39 @@
       "name": "[parameters('webNsgName')]",
       "location": "[parameters('location')]",
       "properties": {}
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('appNsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {}
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('dbNsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {}
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('adNsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {}
+    },
+    {
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Network/networkSecurityGroups",
+      "name": "[parameters('edgeNsgName')]",
+      "location": "[parameters('location')]",
+      "properties": {}
     }
-  ]
+
+
+  ],
+
+  "outputs": {
+  }
 }
