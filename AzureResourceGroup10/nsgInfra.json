@@ -43,35 +43,35 @@
   },
   "resources": [
     {
-      "apiVersion": "2015-06-15",
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "name": "[parameters('webNsgName')]",
+      "apiVersion": "2017-06-01",
       "location": "[parameters('location')]",
-      "properties": {}
+      "name": "[parameters('webNsgName')]",
+      "properties": {},
+      "type": "Microsoft.Network/networkSecurityGroups"
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('appNsgName')]",
       "location": "[parameters('location')]",
       "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('dbNsgName')]",
       "location": "[parameters('location')]",
       "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('adNsgName')]",
       "location": "[parameters('location')]",
       "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
+      "apiVersion": "2017-06-01",
       "type": "Microsoft.Network/networkSecurityGroups",
       "name": "[parameters('edgeNsgName')]",
       "location": "[parameters('location')]",
