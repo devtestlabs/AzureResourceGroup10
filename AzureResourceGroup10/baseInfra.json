@@ -134,8 +134,8 @@
   ],
   "outputs": {
     "linkedTemplateOutput": {
-      "type": "string",
-      "value": "[reference('nsgLinkedTemplate').outputs.testRef.value]"
+      "type": "object",
+      "value": "[reference(concat('Microsoft.Network/networkSecuirtyGroups/',variables('webNsgName')),'2017-06-01')]"
     }
   }
 }
