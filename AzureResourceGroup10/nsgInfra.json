@@ -81,5 +81,9 @@
   ],
 
   "outputs": {
+    "webNsgRef": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecuirtyGroups',parameters('webNsgName'))]"
+    }
   }
 }

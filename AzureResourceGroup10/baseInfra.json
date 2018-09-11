@@ -109,7 +109,10 @@
           {
             "name": "[variables('webSubnetName')]",
             "properties": {
-              "addressPrefix": "[parameters('webSubnetAddrPrefix')]"
+              "addressPrefix": "[parameters('webSubnetAddrPrefix')]",
+              "networkSecurityGroup": {
+                "id": "[reference('nsgLinkedTemplate').outputs.webNsgRef.value]"
+              }
             }
           },
           {
