@@ -83,7 +83,7 @@
   "outputs": {
     "webNsgRef": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/networkSecuirtyGroups/',parameters('webNsgName'))]"
+      "value": "[concatresourceId('Microsoft.Network/networkSecuirtyGroups/',parameters('webNsgName'))]"
     }
   }
 }
