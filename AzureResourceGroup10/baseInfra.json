@@ -78,7 +78,7 @@
           "location": {
             "value": "[parameters('location')]"
           }
-            
+
         }
       }
     },
@@ -87,6 +87,9 @@
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('newVnetName')]",
       "location": "[parameters('location')]",
+      "dependsOn": [
+        "nsgLinkedTemplate"
+      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -132,5 +135,10 @@
 
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "linkedTemplateOutput": {
+      "type": "string",
+      "value": "[reference('nsgLinkedTemplate').outputs.webNsgRef.value]"
+    }
+  }
 }

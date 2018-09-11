@@ -43,11 +43,11 @@
   },
   "resources": [
     {
+      "type": "Microsoft.Network/networkSecurityGroups",
       "apiVersion": "2017-06-01",
       "location": "[parameters('location')]",
       "name": "[parameters('webNsgName')]",
-      "properties": {},
-      "type": "Microsoft.Network/networkSecurityGroups"
+      "properties": {}
     },
     {
       "apiVersion": "2017-06-01",
@@ -83,7 +83,7 @@
   "outputs": {
     "webNsgRef": {
       "type": "string",
-      "value": "[resourceId('Microsoft.Network/networkSecuirtyGroups',parameters('webNsgName'))]"
+      "value": "[concat(resourceId('Microsoft.Network/networkSecuirtyGroups',parameters('webNsgName')))]"
     }
   }
 }
